@@ -1,0 +1,19 @@
+paths:
+  /profile:
+    get:
+      tags:
+        - Profile
+      description: Returns the profile info
+      responses:
+        200:
+          description: OK, A succes response, would include basic profile info
+          content:
+            application/json:
+              schema:
+                type: object
+        500:
+          description: Internal Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'

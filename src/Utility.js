@@ -16,6 +16,10 @@ export function checkRequiredParams(requiredParams, params, res) {
     return true
 }
 
+export function sendErrorResponse(error, res, status) {
+    res.status(status).json({message: error?.toString(), error_code: status}).end();
+}
+
 export const STATUS_CODES = {
     SUCCESS : 200,
     CREATED : 201,

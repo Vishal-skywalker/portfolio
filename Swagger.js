@@ -12,7 +12,26 @@ const options = {
         "email": "das.vishal8583@gmail.com"
       },
     },
+    components: {
+      schemas: {
+        "error-response" : {
+          description: "Generic error message",
+          example: {"message": "internal server error", "error_code": 500},
+          type: 'object',
+          properties: {
+            message: {
+              type: "string",
+              example: "Sample error message",
+            },
+            error_code: {
+              type :"integer",
+              example: 500
+            }
+          }
+        }
+      }
+    },
   },
-  apis: ['./src/Routes/*.js'], // files containing annotations as above
+  apis: ['./src/Routes/*/*.yaml'], // files containing annotations as above
 };
 export const openapiSpecification = swaggerJsdoc(options);
