@@ -3,17 +3,81 @@ paths:
     get:
       tags:
         - Profile
-      description: Returns the profile info
+      description: |
+        **Tech Stack**:
+        - **Node.js & Express**: Server-side JavaScript with Express for routing and middleware.
+        - **SOQL**: Database queries using Salesforce's SOQL.
+        - **JsForce**: Integration with Salesforce for data retrieval.
+        - **JavaScript (ES6+)**: Modern JS features like async/await.
+
+        **Required Skills**:
+        - **JavaScript & ES6+**: Proficient in modern JavaScript syntax.
+        - **Node.js & Express**: Experience with server-side development and RESTful API design.
+        - **Salesforce & SOQL**: Familiarity with Salesforce data models and querying.
+        - **Error Handling**: Ability to implement robust error handling.
+
+        This combination of technologies and skills enables the development of scalable, high-performance APIs that integrate seamlessly with Salesforce and other backend systems.
       responses:
         200:
           description: OK, A succes response, would include basic profile info
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/profile-response'
         500:
           description: Internal Server error
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error-response'
+
+components:
+  schemas:
+    profile-response:
+      type: object
+      properties:
+        name:
+          type: string
+          description: "The name of the person."
+        about:
+          type: string
+          description: "A brief description about the person."
+        contact_info:
+          type: object
+          properties:
+            mobile_phone:
+              type: string
+              description: "The person's mobile phone number."
+            email:
+              type: string
+              description: "The person's email address."
+            website:
+              type: string
+              description: "The person's personal or professional website."
+            address:
+              type: object
+              properties:
+                street:
+                  type: string
+                  description: "The street address."
+                city:
+                  type: string
+                  description: "The city of residence."
+                postal_code:
+                  type: string
+                  description: "The postal code for the address."
+                state:
+                  type: string
+                  description: "The state or region."
+                country:
+                  type: string
+                  description: "The country of residence."
+        current_employer:
+          type: object
+          properties:
+            name:
+              type: string
+              description: "The name of the current employer."
+            website:
+              type: string
+              description: "The website of the current employer."
