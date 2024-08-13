@@ -30,13 +30,14 @@ const userInfo = await conn.authorize({
 
 app.use(express.json());
 
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+
 import setBaseResponse from './Middlewares/BaseResponse.js';
 app.use(setBaseResponse);
 
 import Profile from './Routes/Profile/Profile.js';
 app.use(BASE_PATH, Profile);
 
-app.use('/', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 const port = process.env.PORT || 3000
 app.listen(port, () => 
