@@ -10,7 +10,8 @@ const query = `SELECT Id,
     Description,
     Name,
     Phone,
-    BirthDate,
+    Birthdate,
+    Age_f__c,
     Email
     FROM Contact
     WHERE LastName = 'Das' AND FirstName = 'Vishal'`;
@@ -24,7 +25,8 @@ router.route('/profile')
             const responseData = {
                 name: data.Name,
                 about: data.Description,
-                birth_date: data.BirthDate,
+                birth_date: data.Birthdate,
+                age: data.Age_f__c,
                 contact_info: {
                     mobile_phone: data.Phone,
                     email: data.Email,

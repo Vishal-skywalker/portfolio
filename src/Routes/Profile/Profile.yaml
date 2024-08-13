@@ -1,22 +1,9 @@
 paths:
-  /profile:
+  /api/v1/profile:
     get:
       tags:
         - Profile
-      description: |
-        **Tech Stack**:
-        - **Node.js & Express**: Server-side JavaScript with Express for routing and middleware.
-        - **SOQL**: Database queries using Salesforce's SOQL.
-        - **JsForce**: Integration with Salesforce for data retrieval.
-        - **JavaScript (ES6+)**: Modern JS features like async/await.
-
-        **Required Skills**:
-        - **JavaScript & ES6+**: Proficient in modern JavaScript syntax.
-        - **Node.js & Express**: Experience with server-side development and RESTful API design.
-        - **Salesforce & SOQL**: Familiarity with Salesforce data models and querying.
-        - **Error Handling**: Ability to implement robust error handling.
-
-        This combination of technologies and skills enables the development of scalable, high-performance APIs that integrate seamlessly with Salesforce and other backend systems.
+      description: This Express.js router uses Salesforce SOQL to fetch and return contact information for 'Vishal Das' in JSON format. It handles errors and unsupported methods, leveraging modern JavaScript features for asynchronous operations.
       responses:
         200:
           description: OK, A succes response, would include basic profile info
@@ -42,6 +29,12 @@ components:
         about:
           type: string
           description: "A brief description about the person."
+        birth_date:
+          type: string
+          description: "DOB in yyyy-mm-dd format"
+        age:
+          type: integer
+          description: "corrent age"
         contact_info:
           type: object
           properties:

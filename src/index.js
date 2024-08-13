@@ -8,7 +8,7 @@ import jwt from 'jsonwebtoken';
 import fs from 'fs';
 
 dotenv.config();
-const BASE_PATH = '/';
+const BASE_PATH = '/api/v1/';
 const app = express();
 
 global.conn = new Connection();
@@ -29,13 +29,14 @@ const userInfo = await conn.authorize({
 });
 
 app.use(express.json());
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 import setBaseResponse from './Middlewares/BaseResponse.js';
 app.use(setBaseResponse);
 
 import Profile from './Routes/Profile/Profile.js';
 app.use(BASE_PATH, Profile);
+
+app.use('/', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 const port = process.env.PORT || 3000
 app.listen(port, () => 
