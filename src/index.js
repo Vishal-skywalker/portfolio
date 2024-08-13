@@ -20,7 +20,7 @@ const claim = {
   exp: Math.floor(Date.now() / 1000) + 3 * 60
 };
 
-const key = fs.readFileSync('etc/secrets/private.key', 'utf8');
+const key = process.env.KEY_PATH || fs.readFileSync('etc/secrets/private.key', 'utf8');
 
 const bearerToken = jwt.sign(claim, key, { algorithm: 'RS256'});
 const userInfo = await conn.authorize({
