@@ -1,0 +1,52 @@
+paths:
+  /api/v1/education:
+    get:
+      tags:
+        - Profile
+      description: This Education API utilizes Express.js for server-side routing, JSforce for connecting to Salesforce, and Apex REST services for data retrieval. It employs SOQL for querying Salesforce, with custom utility methods for standardized error handling and JSON response formatting.
+      responses:
+        200:
+          description: OK, A succes response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EducationRecords'
+        500:
+          description: Internal Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+
+components:
+  schemas:
+    EducationRecord:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: auto-number
+          example: "00010015"
+          description: Unique identifier for the education record
+        start_date:
+          type: string
+          format: date
+          nullable: true
+          example: "2018-07-16"
+          description: Start date of the education
+        end_date:
+          type: string
+          format: date
+          nullable: true
+          example: "2022-07-15"
+          description: End date of the education
+        name:
+          type: string
+          description: Name of the educational institution
+        addition_info:
+          type: string
+          description: Additional information about the education record
+    EducationRecords:
+      type: array
+      items:
+        $ref: '#/components/schemas/EducationRecord'
