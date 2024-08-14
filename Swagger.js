@@ -4,7 +4,8 @@ const swaggerDescription =
   "**Tech Stack**:\n" +
   "- **Node.js & Express**: Server-side JavaScript with Express for routing and middleware.\n" +
   "- **SOQL**: Database queries using Salesforce's SOQL.\n" +
-  "- **JsForce**: Integration with Salesforce for data retrieval.\n" +
+  "- **JsForce**: Integration with Salesforce for data retrieval **and API interaction**.\n" +  // **Added**
+  "- **Apex REST Services**: Used to expose custom Salesforce data via RESTful endpoints.\n" +  // **Added**
   "- **JavaScript (ES6+)**: Modern JS features like async/await.\n\n" +
   "**Required Skills**:\n" +
   "- **JavaScript & ES6+**: Proficient in modern JavaScript syntax.\n" +
