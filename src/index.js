@@ -43,6 +43,9 @@ app.use(BASE_PATH, Profile);
 import Education from './Routes/02_Education/Education.js';
 app.use(BASE_PATH, Education);
 
+import Projects from './Routes/03_Projects/Projects.js';
+app.use(BASE_PATH, Projects);
+
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {

@@ -12,6 +12,7 @@
   "author": "Vishal Das",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.7.4",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "fs": "^0.0.1-security",

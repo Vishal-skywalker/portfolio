@@ -1,0 +1,75 @@
+paths:
+  /api/v1/projects:
+    get:
+      tags:
+        - Projects
+      description: This endpoint fetches all projects available in the system using Salesforce Apex and SOQL. If no UUID is provided, it returns a list of all projects, sorted by the end date in descending order. The backend is implemented in Apex, and the data is exposed through a REST API endpoint created with the @RestResource annotation. Each project includes basic information such as the name, start date, end date, and description.
+      summary: Retrieve a list of all projects.
+      responses:
+        200:
+          description: A list of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+        500:
+          description: Internal Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+
+  /api/v1/projects/{uuid}:
+    get:
+      tags:
+        - Projects
+      description: This endpoint fetches detailed information about a specific project identified by the UUID using Salesforce Apex. The backend logic is implemented with Apex, which queries the data using SOQL. The data is returned as a serialized JSON object, including the project's name, start date, end date, description, and the associated technology stack. If the UUID is not found, a 404 Not Found error is returned.
+      summary: Retrieve a specific project by UUID.
+      parameters:
+        - name: uuid
+          required: true
+          in: path
+          schema:
+            type: string
+            example: "0000010007"
+      responses:
+        200:
+          description: OK, A succes response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectWithTechStack'
+        500:
+          description: Internal Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+
+components:
+  schemas:
+    Project:
+      type: object
+      properties:
+        uuid:
+          type: string
+        start_date:
+          type: string
+        name:
+          type: string
+        end_date:
+          type: string
+        descrption:
+          type: string
+
+    ProjectWithTechStack:
+      allOf:
+        - $ref: '#/components/schemas/Project'
+        - type: object
+          properties:
+            tech_stack:
+              type: array
+              items:
+                type: string
