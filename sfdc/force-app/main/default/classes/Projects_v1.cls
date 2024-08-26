@@ -11,10 +11,8 @@ global with sharing class Projects_v1 {
                 Utility.sendSuccessResponse(JSON.serialize(ProjectService.getAllProjects()));
             }
         } catch (Exception ex) {
-            System.debug('ex >>' + ex);
             if (ex instanceof GeneralException) {
                 GeneralException ex1 = (GeneralException) ex;
-                System.debug('ex1.statusCode >>' + ex1.statusCode);
                 Utility.sendErrorResponse(ex1.getMessage(), ex1.statusCode);
                 return;
             }
