@@ -1,0 +1,33 @@
+# Skills API Documentation
+paths:
+  /api/v1/skills:
+    get:
+      tags:
+        - Profile
+      description: This Skills API utilizes Express.js for server-side routing, JSforce for connecting to Salesforce, and Apex REST services for data retrieval. It employs SOQL for querying Salesforce, with custom utility methods for standardized error handling and JSON response formatting.
+      summary: Get all skills
+      operationId: getSkills
+      responses:
+        200:
+          description: OK, A succes response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skills'
+        500:
+          description: Internal Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+
+components:
+  schemas:
+    Skill:
+      type: string
+      description: A single skill name
+      example: "Salesforce Apex"
+    Skills:
+      type: array
+      items:
+        $ref: '#/components/schemas/Skill'

@@ -4,6 +4,8 @@ paths:
       tags:
         - Profile
       description: This Express.js router uses Salesforce SOQL to fetch and return contact information for 'Vishal Das' in JSON format. It handles errors and unsupported methods, leveraging modern JavaScript features for asynchronous operations.
+      summary: Get Profile Information
+      operationId: getProfile
       responses:
         200:
           description: OK, A succes response, would include basic profile info

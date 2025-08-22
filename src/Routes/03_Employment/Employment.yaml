@@ -1,18 +1,19 @@
+# Employment API Documentation
 paths:
-  /api/v1/education:
+  /api/v1/employer:
     get:
       tags:
         - Profile
-      description: This Education API utilizes Express.js for server-side routing, JSforce for connecting to Salesforce, and Apex REST services for data retrieval. It employs SOQL for querying Salesforce, with custom utility methods for standardized error handling and JSON response formatting.
-      summary: Get all education records
-      operationId: getEducationRecords
+      description: This Employment API utilizes Express.js for server-side routing, JSforce for connecting to Salesforce, and Apex REST services for data retrieval. It employs SOQL for querying Salesforce, with custom utility methods for standardized error handling and JSON response formatting.
+      summary: Get all employment records
+      operationId: getEmploymentRecords
       responses:
         200:
           description: OK, A succes response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EducationRecords'
+                $ref: '#/components/schemas/EmploymentRecords'
         500:
           description: Internal Server error
           content:
@@ -22,33 +23,33 @@ paths:
 
 components:
   schemas:
-    EducationRecord:
+    EmploymentRecord:
       type: object
       properties:
         uuid:
           type: string
           format: auto-number
           example: "00010015"
-          description: Unique identifier for the education record
+          description: Unique identifier for the Employment record
         start_date:
           type: string
           format: date
           nullable: true
           example: "2018-07-16"
-          description: Start date of the education
+          description: Start date of the Employment
         end_date:
           type: string
           format: date
           nullable: true
           example: "2022-07-15"
-          description: End date of the education
+          description: End date of the Employment
         name:
           type: string
-          description: Name of the educational institution
+          description: Name of the employer
         addition_info:
           type: string
-          description: Additional information about the education record
-    EducationRecords:
+          description: Additional information about the Employment record
+    EmploymentRecords:
       type: array
       items:
-        $ref: '#/components/schemas/EducationRecord'
+        $ref: '#/components/schemas/EmploymentRecord'
