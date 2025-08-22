@@ -43,7 +43,22 @@ const options = {
               example: 500
             }
           }
-        }
+        },
+        "400-response": {
+          description: "Generic 400 error message",
+          example: { "message": "Bad Request", "error_code": 400 },
+          type: 'object',
+          properties: {
+            message: {
+              type: "string",
+              example: "Sample error message",
+            },
+            error_code: {
+              type: "integer",
+              example: 400
+            }
+          }
+        },
       }
     },
   },

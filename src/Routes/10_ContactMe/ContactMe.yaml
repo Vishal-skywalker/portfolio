@@ -1,0 +1,44 @@
+# ContactMe API Documentation
+paths:
+  /api/v1/sendMessage:
+    post:
+      tags:
+        - ContactMe
+      description: Send a message via the Contact Me form
+      summary: Submit a contact message.
+      operationId: sendContactMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the person sending the message
+                  example: "John Doe"
+                email:
+                  type: string
+                  format: email
+                  description: The email address of the sender
+                  example: "john.doe@gmail.com"
+                message:
+                  type: string
+                  description: The message content
+                  example: "Hello, I would like to get in touch regarding a project."
+      responses:
+        200:
+          description: OK, A succes response
+        500:
+          description: Internal Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+        400:
+          description: Bad Request, The request was invalid or cannot be served
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400-response'

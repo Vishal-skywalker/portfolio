@@ -43,8 +43,20 @@ app.use(BASE_PATH, Profile);
 import Education from './Routes/02_Education/Education.js';
 app.use(BASE_PATH, Education);
 
-import Projects from './Routes/03_Projects/Projects.js';
+import Projects from './Routes/04_Projects/Projects.js';
 app.use(BASE_PATH, Projects);
+
+import Employer from './Routes/03_Employment/Employment.js';
+app.use(BASE_PATH, Employer);
+
+import Skills from './Routes/03.2_Skills/Skills.js';
+app.use(BASE_PATH, Skills);
+
+import Certifications from './Routes/03.5_Certifications/Certifications.js';
+app.use(BASE_PATH, Certifications);
+
+import ContactMe from './Routes/10_ContactMe/ContactMe.js';
+app.use(BASE_PATH, ContactMe);
 
 
 const port = process.env.PORT || 3000

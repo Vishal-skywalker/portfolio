@@ -1,0 +1,45 @@
+# certifications API Documentation
+paths:
+  /api/v1/certifications:
+    get:
+      tags:
+        - Profile
+      description: This Certifications API utilizes Express.js for server-side routing, JSforce for connecting to Salesforce, and Apex REST services for data retrieval. It employs SOQL for querying Salesforce, with custom utility methods for standardized error handling and JSON response formatting.
+      summary: Get all certifications
+      operationId: getCertifications
+      responses:
+        200:
+          description: OK, A succes response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Certifications'
+        500:
+          description: Internal Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error-response'
+
+components:
+  schemas:
+    Certification:
+      type: object
+      properties:
+        title:
+          type: string
+          description: The title of the certification
+          example: "Salesforce Certified AI Associate"
+        issued_date:
+          type: string
+          description: The date the certification was issued
+          example: "Apr, 2025"
+        badge_url:
+          type: string
+          format: uri
+          description: URL to the certification badge image
+          example: "https://personalproject6-dev-ed.develop.my.salesforce-sites.com/api/resource/1755870263380/badges/AI_Associate.png"
+    Certifications:
+      type: array
+      items:
+        $ref: '#/components/schemas/Certification'
