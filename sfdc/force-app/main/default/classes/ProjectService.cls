@@ -16,6 +16,15 @@ public without sharing class ProjectService {
         return new ProjectWrapperExtended(projectList[0]);
     }
     
+    public static Set<String> getAllSkills() {
+        Set<String> skills = new Set<String>();
+        for (Project__c p : [SELECT Id, toLabel(TechStack_mp__c) FROM Project__c ORDER BY EndDate_d__c DESC NULLS FIRST]) {
+            if (String.isNotBlank(p.TechStack_mp__c))
+            	skills.addAll(p.TechStack_mp__c.split(';'));
+        }
+        return skills;
+    }
+    
     public virtual class ProjectWrapper {
         public String name;
         public String start_date;
